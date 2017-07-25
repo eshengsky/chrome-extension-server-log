@@ -1,4 +1,4 @@
-<a href="https://github.com/eshengsky/chrome-extension-server-log/"><img src="https://github.com/eshengsky/chrome-extension-server-log/blob/master/icon.png" height="150" align="right"></a>
+<a href="https://github.com/eshengsky/chrome-extension-server-log/"><img src="https://github.com/eshengsky/chrome-extension-server-log/blob/master/icon.png" height="120" align="right"></a>
 
 # chrome-extension-server-log
 
@@ -22,7 +22,7 @@ Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。
 
 ## 原理
 
-服务器端按照[约定](#约定)，将日志插入响应头 `X-Server-Log` 中；
+服务器端按照 [约定](#约定)，将日志插入响应头 `X-Server-Log` 中；
 
 扩展会监听 Network 中接收到的网络请求，当发现请求的响应头中包含 `X-Server-Log`，则进行解析并将得到的日志信息输出到 `Server Log` 面板中。
 
@@ -33,7 +33,7 @@ Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。
 1. 日志集合必须是一个数组，该数组又对象组成，每一个对象代表一条日志，对面必须包含 `time`、`type`、`message` 3个属性，分别表示时间、日志级别（info、warn、error）、日志内容，日志内容也需要是一个数组。
 
     示例：
-    ```json
+    ```js
     [{
         "time": "2017-07-01 09:30:00.200",
         "type": "info',
