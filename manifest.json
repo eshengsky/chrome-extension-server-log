@@ -1,0 +1,23 @@
+{
+    "name": "Server Log",
+    "description": "在 Chrome F12 中查看服务器端日志。",
+    "version": "1.2",
+    "icons": {
+        "19": "icon.png",
+        "38": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Server Log"
+    },
+    "permissions": [
+        "storage",
+        "tabs",
+        "webRequest",
+        "*://*/*"
+    ],
+    "devtools_page": "devtools.html",
+    "manifest_version": 2
+}

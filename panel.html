@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/panel.css">
+</head>
+<body>
+    <header>
+        <span id="record"><i class="fa fa-circle"></i></span>
+        <span id="clear" title="清空日志"><i class="fa fa-ban fa-fw"></i></span>
+        <span id="split">&nbsp;</span>
+        <label id="search-icon" for="search"><i class="fa fa-search"></i></label>
+        <input id="search" type="search" placeholder="关键字筛选">
+        <label for=level>日志级别</label>
+        <select id="level">
+            <option value="">Info</option>
+            <option value="warn">Warning</option>
+            <option value="error">Error</option>
+        </select>
+        <span id="scroll"><input id="cbScroll" type="checkbox" checked><label for="cbScroll">自动滚屏</label></span>
+        <span id="hiddens"></span>
+    </header>
+    <ul id="logs"></ul>
+    <script src="./js/panel.js"></script>
+</body>
+</html>
