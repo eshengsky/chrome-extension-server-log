@@ -4,9 +4,9 @@
 
 Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。
 
-* 支持任意服务器类型，node.js、Asp.Net、JSP、PHP 等均可
-* 支持 3 种日志级别：Info，Warn，Error
-* 自动识别并将日志中的 URL 包装为链接
+* 支持任意服务器类型，Node.js、Asp.Net、JSP、PHP 等均可；
+* 支持 3 种日志级别：Info，Warn，Error；
+* 自动识别并将日志中的 URL 包装为链接。
 
 ## 预览
 
@@ -15,9 +15,7 @@ Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。
 ## 安装
 
 * 打开 Chrome 浏览器，在地址栏输入 `chrome://extensions/` 进入 Chrome 扩展页面，勾选"开发者模式"。
-
 * 将下载后的 `dist/server-log.src` 文件拖到页面中，点击"添加扩展程序"按钮。
-
 * 按 F12 打开开发者工具，点击 `Server Log` 面板，后端日志将会展示在这里。
 
 ## 原理
