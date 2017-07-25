@@ -54,7 +54,7 @@ Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。
 
 ## 后端示例
 
-[这里](https://github.com/eshengsky/chrome-extension-node-demo/) 提供了一个简单的基于 Node.js 的后端实现，可供参考。
+[这里](https://github.com/eshengsky/chrome-extension-log-node-demo/) 提供了一个简单的基于 Node.js 的后端实现，可供参考。
 
 ## 许可
 MIT License
