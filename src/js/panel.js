@@ -27,6 +27,8 @@
 
     getEl('#clear').addEventListener('click', function() {
         getEl('#logs').innerHTML = '';
+        getEl('#total-count').textContent = '0';
+        getEl('#filter-info').textContent = '';
     });
 
     var filterLogs = function() {
@@ -56,9 +58,9 @@
             }
         });
         if (hiddenCount > 0) {
-            getEl('#hiddens').innerHTML = hiddenCount + '条日志被筛选隐藏';
+            getEl('#filter-info').textContent = hiddenCount + '条日志被筛选隐藏';
         } else {
-            getEl('#hiddens').innerHTML = '';
+            getEl('#filter-info').textContent = '';
         }
     }
 

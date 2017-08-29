@@ -94,11 +94,8 @@ input:focus, select:focus {
     margin-top: 0;
 }
 
-#hiddens {
-    float: right;
-    margin-right: 22px;
-    color: #888;
-    line-height: 24px;
+#logs {
+    font-family: Tahoma;
 }
 
 ul {
@@ -141,7 +138,7 @@ ul li a:active, ul li a:focus, ul li a:hover, ul li a:hover {
 }
 
 .fa-info-circle {
-    color: green;
+    color: DodgerBlue;
 }
 
 .fa-warning {
@@ -153,7 +150,7 @@ ul li a:active, ul li a:focus, ul li a:hover, ul li a:hover {
 }
 
 .time, .type, .category, .split {
-    color: green;
+    color: DodgerBlue;
 }
 
 li.warn .time, li.warn .type, li.warn .category, li.warn .split {
@@ -162,4 +159,52 @@ li.warn .time, li.warn .type, li.warn .category, li.warn .split {
 
 li.error .time, li.error .type, li.error .category, li.error .split {
     color: red;
+}
+
+footer {
+    background: #f8f8f8;
+    padding: 0 10px 3px;
+    border-top: 1px solid #ccc;
+    color: #666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 23px;
+    line-height: 21px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.fa-heart {
+    font-size: 12px;
+}
+
+footer .desc {
+    font-family: Tahoma;
+}
+
+footer a {
+    color: #666;
+    text-decoration: underline;
+}
+
+footer a:active, footer a:hover, footer a:link {
+    color: #666;
+    outline: 0;
+}
+
+#filter-info, #count-info {
+    float: right;
+    margin-right: 22px;
+    line-height: 24px;
+}
+
+#filter-info {
+    color: #d30775;
+    margin-left: -15px;
+}
+
+#total-count {
+    font-style: normal;
 }

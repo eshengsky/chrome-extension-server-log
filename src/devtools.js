@@ -14,6 +14,9 @@ function requestHandler(request) {
             fragment,
             html = '';
 
+        var keyword = PanelWindow.document.querySelector('#search').value.replace(/(^\s*)|(\s*$)/g, "");
+        var selectLevel = PanelWindow.document.querySelector('#level').value;
+
         // 开启监听才继续
         chrome.storage.sync.get('serverlog_record', function (data) {
             try {
@@ -58,20 +61,47 @@ function requestHandler(request) {
                                 icon = 'fa-times-circle';
                                 break;
                         }
-                        
+
+                        // 显示隐藏状态判断
+                        var matchLevel = true;
+                        switch (selectLevel) {
+                            case 'warn':
+                                if (type !== 'warn' && type !== 'error') {
+                                    matchLevel = false;
+                                }
+                                break;
+                            case 'error':
+                                if (type !== 'error') {
+                                    matchLevel = false;
+                                }
+                                break;
+                        }
+                        var style = '';
+                        if ((logObj.time.indexOf(keyword) >= 0 
+                            || logObj.type.indexOf(keyword) >= 0
+                            || (logObj.category || '').indexOf(keyword) >= 0
+                            || msgStr.indexOf(keyword) >= 0) 
+                            && matchLevel) {
+                            style = '';
+                        } else {
+                            style = 'display: none;';
+                        }
+
                         var html = [
-                            '<li class="' + type + '">',
-                                '<i class="fa ' + icon + ' fa-fw"></i>',
-                                '<span class="time">[' + logObj.time + ']</span> ',
-                                '<span class="type">[' + logObj.type + ']</span> '
+                            '<li class="' + type + '" style="' + style + '">',
+                            '<i class="fa ' + icon + ' fa-fw"></i>',
+                            '<span class="time">[' + logObj.time + ']</span> ',
+                            '<span class="type">[' + logObj.type + ']</span> '
                         ];
+
                         if (logObj.category) {
                             html.push(
                                 '<span class="category">' + logObj.category + '</span> ');
                         }
+
                         html.push(
-                                '<span class="split">- </span>',
-                                '<span class="message">' + msgStr + '</span>',
+                            '<span class="split">- </span>',
+                            '<span class="message">' + msgStr + '</span>',
                             '</li>');
 
                         child.innerHTML = html.join('');
@@ -79,9 +109,37 @@ function requestHandler(request) {
                         fragment.appendChild(child);
                     });
 
-                    // 将片段插入dom树
                     setTimeout(function () {
-                        PanelWindow.document.querySelector('#logs').appendChild(fragment);
+                        var logsDom = PanelWindow.document.querySelector('#logs');
+                        // 将片段插入dom树
+                        logsDom.appendChild(fragment);
+
+                        // 超过最大日志数后移除最开始的日志
+                        var maxLogs = 999;
+                        var totalNodes = logsDom.childElementCount;
+                        if (totalNodes > maxLogs) {
+                            for (var i = 0; i < (totalNodes - maxLogs); i++) {
+                                logsDom.removeChild(logsDom.children[0]);
+                            }
+                        }
+
+                        // 设置当前日志数
+                        PanelWindow.document.querySelector('#total-count').textContent = totalNodes;
+
+                        var hiddenCount = 0;
+                        var lis = Array.prototype.slice.call(PanelWindow.document.querySelectorAll('#logs li'));
+                        lis.forEach(function (li) {
+                            if (li.style.display === 'none') {
+                                hiddenCount++;
+                            }
+                        });
+                        if (hiddenCount > 0) {
+                            PanelWindow.document.querySelector('#filter-info').textContent = hiddenCount + '条日志被筛选隐藏';
+                        } else {
+                            PanelWindow.document.querySelector('#filter-info').textContent = '';
+                        }
+
+                        // 自动滚屏
                         chrome.storage.sync.get('serverlog_scroll', function (data) {
                             var isScroll = data['serverlog_scroll'];
                             if (!isScroll || isScroll === 'true') {
