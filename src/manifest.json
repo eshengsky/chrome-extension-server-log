@@ -1,7 +1,7 @@
 {
     "name": "Server Log",
     "description": "在 Chrome F12 中查看服务器端日志。",
-    "version": "1.3",
+    "version": "1.4",
     "icons": {
         "19": "icon.png",
         "38": "icon.png",

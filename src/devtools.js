@@ -1,6 +1,9 @@
 var PanelWindow;
 chrome.devtools.network.onRequestFinished.addListener(requestHandler);
 function requestHandler(request) {
+    if (!PanelWindow) {
+        return;
+    }
     try {
         var headers = request.response.headers;
 
