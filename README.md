@@ -1,3 +1,5 @@
+<a href="https://github.com/eshengsky/chrome-extension-server-log/"><img src="https://github.com/eshengsky/chrome-extension-server-log/blob/master/icon.png" height="120" align="right"></a>
+
 # chrome-extension-server-log
 
 Chrome 浏览器扩展插件，用于在 F12 中查看服务器端的日志。  
